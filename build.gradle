@@ -4,9 +4,9 @@ repositories {
   mavenCentral()
 }
 
-groovy_ver = '2.5.12'
-ant_ver = '1.9.15'
-pct_ver = '215'
+def groovy_ver = '2.5.12'
+def ant_ver = '1.9.15'
+def pct_ver = '215'
 
 dependencies {
   implementation "org.codehaus.groovy:groovy-all:$groovy_ver"
