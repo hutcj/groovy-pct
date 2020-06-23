@@ -1,0 +1,34 @@
+apply plugin: 'java'
+
+repositories {
+  mavenCentral()
+}
+
+def groovy_ver = '2.5.12'
+def ant_ver = '1.9.15'
+def pct_ver = '215'
+
+dependencies {
+  implementation "org.codehaus.groovy:groovy-all:$groovy_ver"
+  implementation "org.apache.ant:ant:$ant_ver"
+  implementation "org.apache.ant:ant-launcher:$ant_ver"
+  implementation "eu.rssw.pct:pct:$pct_ver"
+  /*implementation files(
+    'PCT.jar'
+    'groovy/groovy-2.4.15/embeddable/groovy-all-2.4.15-indy.jar',
+    'ant/apache-ant-1.9.15/lib/ant.jar',
+    'ant/apache-ant-1.9.15/lib/ant-launcher.jar'
+  )*/
+}
+
+jar {
+  manifest {
+    attributes('Main-Class': 'groovy.ui.GroovyMain')
+  }
+  baseName = 'ant-groovy-pct'
+  from {
+    configurations.runtimeClasspath.collect {
+      it.isDirectory() ? it : zipTree(it)
+    }
+  }
+}

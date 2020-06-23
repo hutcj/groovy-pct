@@ -1,6 +1,8 @@
 PCT.jar
 ant.zip
 ant/
+build/
 groovy.zip
 groovy/
 dist/
+.gradle/
